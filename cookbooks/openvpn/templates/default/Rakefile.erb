@@ -56,6 +56,9 @@ persist-tun
 ca ca.crt
 cert #{usercn}.crt
 key #{usercn}.key
+<% if node["openvpn"]["tls-auth"] -%>
+tls-auth <%= node["openvpn"]["tls-auth"] %> 0
+<% end -%>
 comp-lzo
 verb 3
 EOF
@@ -71,7 +74,7 @@ EOF
   end
 
   puts "* Create .tar.gz archive for #{usercn}."
-  sh %{(cd #{keydir} && tar zcf #{usercn}.tar.gz ca.crt #{usercn}.crt #{usercn}.key #{usercn}.conf #{usercn}.ovpn)}
+  sh %{(cd #{keydir} && tar zcf #{usercn}.tar.gz ca.crt #{usercn}.crt #{usercn}.key #{usercn}.conf #{usercn}.ovpn <%= node["openvpn"]["tls-auth"] %>)}
   sh %{chmod 0600 #{keydir}/#{usercn}.tar.gz}
   tar_path = "/tmp"
   sh %{cp #{keydir}/#{usercn}.tar.gz #{tar_path}/}

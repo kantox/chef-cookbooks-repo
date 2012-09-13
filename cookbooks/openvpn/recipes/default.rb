@@ -113,6 +113,13 @@ bash "openvpn-server-key" do
   not_if { ::File.exists?("#{key_dir}/server.crt") }
 end
 
+bash "openvpn-tls-auth" do
+  code <<-EOF
+    openvpn --genkey --secret #{key_dir}/#{node["openvpn"]["tls-auth"]}
+  EOF
+  not_if { ("#{node['openvpn']['tls-auth']}" == '') or ::File.exists?("#{key_dir}/#{node['openvpn']['tls-auth']}") }
+end
+
 template "/etc/openvpn/server.conf" do
   source "server.conf.erb"
   owner "root"
