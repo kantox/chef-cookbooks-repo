@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Overview
 ========
 
@@ -64,3 +65,9 @@ Next Steps
 ==========
 
 Read the README file in each of the subdirectories for more information about what goes in those directories.
+=======
+chef-cookbooks-repo
+===================
+
+A small collection of Chef cookbooks with small modifications by me
+>>>>>>> 09dcb310a73b810a1f7565ce5a4aba48f331bdaf
