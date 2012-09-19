@@ -37,6 +37,12 @@ end
   end
 end
 
+directory node['nginx']['lib_dir'] do
+  owner "root"
+  group "root"
+  mode "0755"
+end
+
 %w(nxensite nxdissite).each do |nxscript|
   template "/usr/sbin/#{nxscript}" do
     source "#{nxscript}.erb"

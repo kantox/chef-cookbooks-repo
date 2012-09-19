@@ -1,10 +1,8 @@
 #
 # Cookbook Name:: nginx
-# Attributes:: upload_progress
+# Attributes:: upload
 #
-# Author:: Jamie Winsor (<jamie@vialstudios.com>)
-#
-# Copyright 2012, Riot Games
+# Author:: Hristo Erinin (<zorlem@gmail.com>)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,5 +17,5 @@
 # limitations under the License.
 #
 
-default['nginx']['upload_progress']['url']      = "https://github.com/masterzen/nginx-upload-progress-module/tarball/v0.8.4/nginx-upload-progress-module-v0.8.4.tar.gz"
-default['nginx']['upload_progress']['checksum'] = "9a6acb984d81f5d7e04214d63ae94273"
+default['nginx']['upload']['url']      = "https://github.com/vkholodkov/nginx-upload-module/tarball/2.2.0/nginx-upload-module-2.2.0.tar.gz"
+default['nginx']['upload']['checksum'] = "4fa1d7d83d965f84bae8ab478bccb9bd3a91c12953159ad42d140bef5ebb5b5d"

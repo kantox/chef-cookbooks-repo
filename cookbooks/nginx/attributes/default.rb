@@ -27,6 +27,7 @@
 default['nginx']['version'] = "1.2.3"
 default['nginx']['dir'] = "/etc/nginx"
 default['nginx']['log_dir'] = "/var/log/nginx"
+default['nginx']['lib_dir'] = "/var/lib/nginx"
 default['nginx']['binary'] = "/usr/sbin/nginx"
 
 case node['platform']
