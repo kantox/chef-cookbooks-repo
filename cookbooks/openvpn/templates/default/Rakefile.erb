@@ -37,13 +37,6 @@ task :client do
     usercn = ENV['name'].gsub(/@/, '_')
   end
   
-  if (ENV['gateway'] == nil)
-    raise "Specify the vpn gateway with 'gateway=\"gateway\"'"
-    exit 1
-  else
-    gateway = ENV['gateway']
-  end
-
     conf = <<EOF
 client
 dev tun
@@ -61,6 +54,7 @@ tls-auth <%= node["openvpn"]["tls-auth"] %> 0
 <% end -%>
 comp-lzo
 verb 3
+remote-cert-tls server
 EOF
 
   puts "* Generate certificate for #{usercn}."
