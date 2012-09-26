@@ -50,7 +50,7 @@ ca ca.crt
 cert #{usercn}.crt
 key #{usercn}.key
 <% if node["openvpn"]["tls-auth"] -%>
-tls-auth <%= node["openvpn"]["tls-auth"] %> 0
+tls-auth <%= node["openvpn"]["tls-auth"] %> 1
 <% end -%>
 comp-lzo
 verb 3
