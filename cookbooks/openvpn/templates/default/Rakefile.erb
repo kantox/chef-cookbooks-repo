@@ -69,9 +69,13 @@ EOF
 
   puts "* Create .tar.gz archive for #{usercn}."
   sh %{(cd #{keydir} && tar zcf #{usercn}.tar.gz ca.crt #{usercn}.crt #{usercn}.key #{usercn}.conf #{usercn}.ovpn <%= node["openvpn"]["tls-auth"] %>)}
-  sh %{chmod 0600 #{keydir}/#{usercn}.tar.gz}
+  sh %{chmod 0640 #{keydir}/#{usercn}.tar.gz}
   tar_path = "/tmp"
   sh %{cp #{keydir}/#{usercn}.tar.gz #{tar_path}/}
   sh %{rm #{keydir}/#{usercn}.*}
+<% if ["ubuntu"].include?(node["platform"]) -%>
+#make files readable by all admin users
+  sh %{chown root:admin #{tar_path}/#{usercn}.tar.gz}
+<% end -%>
   puts "* Done, #{usercn} keys are in #{tar_path}/#{usercn}.tar.gz"
 end
