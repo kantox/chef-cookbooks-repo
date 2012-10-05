@@ -20,7 +20,7 @@ mysqld  = (conf && conf["mysqld"]) || {}
 passwords = EncryptedPasswords.new(node, percona["encrypted_data_bag"])
 
 datadir = mysqld["datadir"] || server["datadir"]
-user    = mysqld["user"] || server["user"]
+user    = mysqld["username"] || server["username"]
 
 # now let's set the root password only if this is the initial install
 execute "Update MySQL root password" do
